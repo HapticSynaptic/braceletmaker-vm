@@ -4,13 +4,13 @@ const Serialport = require('../../io/serialport');
 const Base64Util = require('../../util/base64-util');
 
 /**
- * Manage communication with a common peripheral over a OpenBlock Link client socket.
+ * Manage communication with a common peripheral over a Bracelet Maker Link client socket.
  */
 class CommonPeripheral{
 
     /**
      * Construct a common communication object.
-     * @param {Runtime} runtime - the OpenBlock runtime
+     * @param {Runtime} runtime - the Bracelet Maker runtime
      * @param {string} deviceId - the id of the peripheral
      * @param {string} originalDeviceId - the original id of the peripheral, like xxx_arduinoUno
      * @param {object} pnpidList - the pnp id of the peripheral
@@ -19,7 +19,7 @@ class CommonPeripheral{
      */
     constructor (runtime, deviceId, originalDeviceId, pnpidList, serialConfig, diveceOpt) {
         /**
-         * The OpenBlock runtime used to trigger the green flag button.
+         * The Bracelet Maker runtime used to trigger the green flag button.
          * @type {Runtime}
          * @private
          */

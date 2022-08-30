@@ -1189,7 +1189,7 @@ class VirtualMachine extends EventEmitter {
      * @return {Function} Returns a function to restore the sprite that was deleted
      */
     deleteSprite (targetId) {
-        const target = this.runtime.getTargetById(targetId);
+        const target = this.runtime.getTargetById(targetId) || this.runtime.getSpriteTargetByName(targetId);
 
         if (target) {
             const targetIndexBeforeDelete = this.runtime.targets.map(t => t.id).indexOf(target.id);

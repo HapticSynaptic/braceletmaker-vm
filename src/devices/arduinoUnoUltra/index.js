@@ -106,12 +106,12 @@ const DataType = {
 };
 
 /**
- * Manage communication with a Arduino Uno peripheral over a OpenBlock Link client socket.
+ * Manage communication with a Arduino Uno peripheral over a Bracelet Maker Link client socket.
  */
 class ArduinoUnoUltra extends ArduinoPeripheral{
     /**
      * Construct a Arduino communication object.
-     * @param {Runtime} runtime - the OpenBlock runtime
+     * @param {Runtime} runtime - the Bracelet Maker runtime
      * @param {string} deviceId - the id of the extension
      * @param {string} originalDeviceId - the original id of the peripheral, like xxx_arduinoUno
      */
@@ -121,7 +121,7 @@ class ArduinoUnoUltra extends ArduinoPeripheral{
 }
 
 /**
- * OpenBlock blocks to interact with a Arduino Uno peripheral.
+ * Bracelet Maker blocks to interact with a Arduino Uno peripheral.
  */
 class OpenBlockArduinoUnoUltraDevice {
     /**
@@ -552,12 +552,12 @@ class OpenBlockArduinoUnoUltraDevice {
 
     /**
      * Construct a set of Arduino blocks.
-     * @param {Runtime} runtime - the OpenBlock runtime.
+     * @param {Runtime} runtime - the Bracelet Maker runtime.
      * @param {string} originalDeviceId - the original id of the peripheral, like xxx_arduinoUno
      */
     constructor (runtime, originalDeviceId) {
         /**
-         * The OpenBlock runtime.
+         * The Bracelet Maker runtime.
          * @type {Runtime}
          */
         this.runtime = runtime;
@@ -579,9 +579,9 @@ class OpenBlockArduinoUnoUltraDevice {
                     default: 'Pins',
                     description: 'The name of the arduino uno device pin category'
                 }),
-                color1: '#4C97FF',
-                color2: '#3373CC',
-                color3: '#3373CC',
+                color1: '#9966ff',
+                color2: '#63c',
+                color3: '#63c',
 
                 blocks: [
                     {
@@ -813,7 +813,7 @@ class OpenBlockArduinoUnoUltraDevice {
                         arguments: {
                             VALUE: {
                                 type: ArgumentType.STRING,
-                                defaultValue: 'Hello OpenBlock'
+                                defaultValue: 'Hello Bracelet Maker'
                             },
                             EOL: {
                                 type: ArgumentType.STRING,

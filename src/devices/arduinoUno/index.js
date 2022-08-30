@@ -104,12 +104,12 @@ const DataType = {
 };
 
 /**
- * Manage communication with a Arduino Uno peripheral over a OpenBlock Link client socket.
+ * Manage communication with a Arduino Uno peripheral over a Bracelet Maker Link client socket.
  */
 class ArduinoUno extends ArduinoPeripheral{
     /**
      * Construct a Arduino communication object.
-     * @param {Runtime} runtime - the OpenBlock runtime
+     * @param {Runtime} runtime - the Bracelet Maker runtime
      * @param {string} deviceId - the id of the extension
      * @param {string} originalDeviceId - the original id of the peripheral, like xxx_arduinoUno
      */
@@ -119,7 +119,7 @@ class ArduinoUno extends ArduinoPeripheral{
 }
 
 /**
- * OpenBlock blocks to interact with a Arduino Uno peripheral.
+ * Bracelet Maker blocks to interact with a Arduino Uno peripheral.
  */
 class OpenBlockArduinoUnoDevice {
     /**
@@ -457,12 +457,12 @@ class OpenBlockArduinoUnoDevice {
 
     /**
      * Construct a set of Arduino blocks.
-     * @param {Runtime} runtime - the OpenBlock runtime.
+     * @param {Runtime} runtime - the Bracelet Maker runtime.
      * @param {string} originalDeviceId - the original id of the peripheral, like xxx_arduinoUno
      */
     constructor (runtime, originalDeviceId) {
         /**
-         * The OpenBlock runtime.
+         * The Bracelet Maker runtime.
          * @type {Runtime}
          */
         this.runtime = runtime;
@@ -530,27 +530,6 @@ class OpenBlockArduinoUnoDevice {
                             }
                         }
                     },
-                    {
-
-                        opcode: 'setPwmOutput',
-                        text: formatMessage({
-                            id: 'arduinoUno.pins.setPwmOutput',
-                            default: 'set pwm pin [PIN] out [OUT]',
-                            description: 'arduinoUno set pwm pin out'
-                        }),
-                        blockType: BlockType.COMMAND,
-                        arguments: {
-                            PIN: {
-                                type: ArgumentType.STRING,
-                                menu: 'pwmPins',
-                                defaultValue: Pins.D3
-                            },
-                            OUT: {
-                                type: ArgumentType.UINT8_NUMBER,
-                                defaultValue: '255'
-                            }
-                        }
-                    },
                     '---',
                     {
                         opcode: 'readDigitalPin',
@@ -606,48 +585,6 @@ class OpenBlockArduinoUnoDevice {
                             }
                         }
                     },
-                    '---',
-                    {
-
-                        opcode: 'attachInterrupt',
-                        text: formatMessage({
-                            id: 'arduinoUno.pins.attachInterrupt',
-                            default: 'attach interrupt pin [PIN] mode [MODE] executes',
-                            description: 'arduinoUno attach interrupt'
-                        }),
-                        blockType: BlockType.CONDITIONAL,
-                        arguments: {
-                            PIN: {
-                                type: ArgumentType.STRING,
-                                menu: 'interruptPins',
-                                defaultValue: Pins.D3
-                            },
-                            MODE: {
-                                type: ArgumentType.STRING,
-                                menu: 'interruptMode',
-                                defaultValue: InterrupMode.Rising
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    },
-                    {
-
-                        opcode: 'detachInterrupt',
-                        text: formatMessage({
-                            id: 'arduinoUno.pins.detachInterrupt',
-                            default: 'detach interrupt pin [PIN]',
-                            description: 'arduinoUno detach interrupt'
-                        }),
-                        blockType: BlockType.COMMAND,
-                        arguments: {
-                            PIN: {
-                                type: ArgumentType.STRING,
-                                menu: 'interruptPins',
-                                defaultValue: Pins.D3
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    }
                 ],
                 menus: {
                     pins: {
@@ -674,216 +611,6 @@ class OpenBlockArduinoUnoDevice {
                     }
                 }
             },
-            {
-                id: 'serial',
-                name: formatMessage({
-                    id: 'arduinoUno.category.serial',
-                    default: 'Serial',
-                    description: 'The name of the arduino uno device serial category'
-                }),
-                color1: '#9966FF',
-                color2: '#774DCB',
-                color3: '#774DCB',
-
-                blocks: [
-                    {
-                        opcode: 'serialBegin',
-                        text: formatMessage({
-                            id: 'arduinoUno.serial.serialBegin',
-                            default: 'serial begin baudrate [VALUE]',
-                            description: 'arduinoUno serial begin'
-                        }),
-                        blockType: BlockType.COMMAND,
-                        arguments: {
-                            VALUE: {
-                                type: ArgumentType.STRING,
-                                menu: 'baudrate',
-                                defaultValue: Buadrate.B9600
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    },
-                    {
-                        opcode: 'serialPrint',
-                        text: formatMessage({
-                            id: 'arduinoUno.serial.serialPrint',
-                            default: 'serial print [VALUE] [EOL]',
-                            description: 'arduinoUno serial print'
-                        }),
-                        blockType: BlockType.COMMAND,
-                        arguments: {
-                            VALUE: {
-                                type: ArgumentType.STRING,
-                                defaultValue: 'Hello OpenBlock'
-                            },
-                            EOL: {
-                                type: ArgumentType.STRING,
-                                menu: 'eol',
-                                defaultValue: Eol.Warp
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    },
-                    {
-                        opcode: 'serialAvailable',
-                        text: formatMessage({
-                            id: 'arduinoUno.serial.serialAvailable',
-                            default: 'serial available data length',
-                            description: 'arduinoUno serial available data length'
-                        }),
-                        blockType: BlockType.REPORTER,
-                        disableMonitor: true,
-                        programMode: [ProgramModeType.UPLOAD]
-                    },
-                    {
-                        opcode: 'serialReadData',
-                        text: formatMessage({
-                            id: 'arduinoUno.serial.serialReadData',
-                            default: 'serial read data',
-                            description: 'arduinoUno serial read data'
-                        }),
-                        blockType: BlockType.REPORTER,
-                        disableMonitor: true,
-                        programMode: [ProgramModeType.UPLOAD]
-                    }
-                ],
-                menus: {
-                    baudrate: {
-                        items: this.BAUDTATE_MENU
-                    },
-                    eol: {
-                        items: this.EOL_MENU
-                    }
-                }
-            },
-            {
-                id: 'data',
-                name: formatMessage({
-                    id: 'arduinoUno.category.data',
-                    default: 'Data',
-                    description: 'The name of the arduino uno device data category'
-                }),
-                color1: '#CF63CF',
-                color2: '#C94FC9',
-                color3: '#BD42BD',
-                blocks: [
-                    {
-                        opcode: 'dataMap',
-                        text: formatMessage({
-                            id: 'arduinoUno.data.dataMap',
-                            default: 'map [DATA] from ([ARG0], [ARG1]) to ([ARG2], [ARG3])',
-                            description: 'arduinoUno data map'
-                        }),
-                        blockType: BlockType.REPORTER,
-                        arguments: {
-                            DATA: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '50'
-                            },
-                            ARG0: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '1'
-                            },
-                            ARG1: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '100'
-                            },
-                            ARG2: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '1'
-                            },
-                            ARG3: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '1000'
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    },
-                    {
-                        opcode: 'dataConstrain',
-                        text: formatMessage({
-                            id: 'arduinoUno.data.dataConstrain',
-                            default: 'constrain [DATA] between ([ARG0], [ARG1])',
-                            description: 'arduinoUno data constrain'
-                        }),
-                        blockType: BlockType.REPORTER,
-                        arguments: {
-                            DATA: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '50'
-                            },
-                            ARG0: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '1'
-                            },
-                            ARG1: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '100'
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    },
-                    '---',
-                    {
-                        opcode: 'dataConvert',
-                        text: formatMessage({
-                            id: 'arduinoUno.data.dataConvert',
-                            default: 'convert [DATA] to [TYPE]',
-                            description: 'arduinoUno data convert'
-                        }),
-                        blockType: BlockType.REPORTER,
-                        arguments: {
-                            DATA: {
-                                type: ArgumentType.STRING,
-                                defaultValue: '123'
-                            },
-                            TYPE: {
-                                type: ArgumentType.STRING,
-                                menu: 'dataType',
-                                defaultValue: DataType.Integer
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    },
-                    {
-                        opcode: 'dataConvertASCIICharacter',
-                        text: formatMessage({
-                            id: 'arduinoUno.data.dataConvertASCIICharacter',
-                            default: 'convert [DATA] to ASCII character',
-                            description: 'arduinoUno data convert to ASCII character'
-                        }),
-                        blockType: BlockType.REPORTER,
-                        arguments: {
-                            DATA: {
-                                type: ArgumentType.NUMBER,
-                                defaultValue: '97'
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    },
-                    {
-                        opcode: 'dataConvertASCIINumber',
-                        text: formatMessage({
-                            id: 'arduinoUno.data.dataConvertASCIINumber',
-                            default: 'convert [DATA] to ASCII nubmer',
-                            description: 'arduinoUno data convert to ASCII nubmer'
-                        }),
-                        blockType: BlockType.REPORTER,
-                        arguments: {
-                            DATA: {
-                                type: ArgumentType.STRING,
-                                defaultValue: 'a'
-                            }
-                        },
-                        programMode: [ProgramModeType.UPLOAD]
-                    }
-                ],
-                menus: {
-                    dataType: {
-                        items: this.DATA_TYPE_MENU
-                    }
-                }
-            }
         ];
     }
 

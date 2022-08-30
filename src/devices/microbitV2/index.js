@@ -87,12 +87,12 @@ const Level = {
 };
 
 /**
- * Manage communication with a Microbit V2 peripheral over a OpenBlock Link client socket.
+ * Manage communication with a Microbit V2 peripheral over a Bracelet Maker Link client socket.
  */
 class MicrobitV2 extends CommonPeripheral{
     /**
      * Construct a Microbit communication object.
-     * @param {Runtime} runtime - the OpenBlock runtime
+     * @param {Runtime} runtime - the Bracelet Maker runtime
      * @param {string} deviceId - the id of the deivce
      * @param {string} originalDeviceId - the original id of the peripheral, like xxx_arduinoUno
      */
@@ -102,7 +102,7 @@ class MicrobitV2 extends CommonPeripheral{
 }
 
 /**
- * OpenBlock blocks to interact with a Microbit V2 peripheral.
+ * Bracelet Maker blocks to interact with a Microbit V2 peripheral.
  */
 class OpenBlockMicrobitV2Device {
     /**
@@ -457,11 +457,11 @@ class OpenBlockMicrobitV2Device {
 
     /**
      * Construct a set of Microbit V2 blocks.
-     * @param {Runtime} runtime - the OpenBlock runtime.
+     * @param {Runtime} runtime - the Bracelet Maker runtime.
      */
     constructor (runtime) {
         /**
-         * The OpenBlock runtime.
+         * The Bracelet Maker runtime.
          * @type {Runtime}
          */
         this.runtime = runtime;
@@ -481,9 +481,9 @@ class OpenBlockMicrobitV2Device {
                 default: 'Pins',
                 description: 'The name of the microbit device pin category'
             }),
-            color1: '#4C97FF',
-            color2: '#3373CC',
-            color3: '#3373CC',
+            color1: '#9966ff',
+            color2: '#63c',
+            color3: '#63c',
 
             blocks: [
                 {
@@ -650,7 +650,7 @@ class OpenBlockMicrobitV2Device {
                     arguments: {
                         TEXT: {
                             type: ArgumentType.STRING,
-                            defaultValue: 'Hello OpenBlock'
+                            defaultValue: 'Hello Bracelet Maker'
                         }
                     }
                 },
@@ -665,7 +665,7 @@ class OpenBlockMicrobitV2Device {
                     arguments: {
                         TEXT: {
                             type: ArgumentType.STRING,
-                            defaultValue: 'Hello OpenBlock'
+                            defaultValue: 'Hello Bracelet Maker'
                         }
                     }
                 },
@@ -927,7 +927,7 @@ class OpenBlockMicrobitV2Device {
                     arguments: {
                         TEXT: {
                             type: ArgumentType.STRING,
-                            defaultValue: 'Hello OpenBlock'
+                            defaultValue: 'Hello Bracelet Maker'
                         }
                     }
                 },
@@ -987,7 +987,7 @@ class OpenBlockMicrobitV2Device {
                     arguments: {
                         TEXT: {
                             type: ArgumentType.STRING,
-                            defaultValue: 'Hello OpenBlock'
+                            defaultValue: 'Hello Bracelet Maker'
                         }
                     }
                 }
