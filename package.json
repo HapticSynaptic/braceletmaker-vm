@@ -1,15 +1,15 @@
 {
-  "name": "openblock-vm",
-  "version": "0.2.0",
+  "name": "braceletmaker-vm",
+  "version": "1.2.0",
   "description": "Virtual Machine for Bracelet Maker",
-  "author": "Massachusetts Institute of Technology",
+  "author": "Haptic Synaptic",
   "license": "BSD-3-Clause",
-  "homepage": "https://github.com/openblockcc/openblock-vm#readme",
+  "homepage": "https://github.com/HapticSynaptic/braceletmaker-vm#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/openblockcc/openblock-vm.git"
+    "url": "git+ssh://git@github.com/HapticSynaptic/braceletmaker-vm.git"
   },
-  "main": "./dist/node/openblock-vm.js",
+  "main": "./dist/node/braceletmaker-vm.js",
   "browser": "./src/index.js",
   "scripts": {
     "build": "npm run docs && webpack --progress --colors --bail",
@@ -59,6 +59,8 @@
     "adm-zip": "0.4.11",
     "babel-eslint": "10.1.0",
     "babel-loader": "8.2.2",
+    "braceletmaker-blocks": "1.2.0",
+    "braceletmaker-l10n": "1.2.0",
     "callsite": "1.0.0",
     "copy-webpack-plugin": "4.5.4",
     "docdash": "1.2.0",
@@ -71,8 +73,6 @@
     "jsdoc": "3.6.6",
     "json": "^9.0.4",
     "lodash.defaultsdeep": "4.6.1",
-    "openblock-blocks": "0.1.0-prerelease.20210324090738",
-    "openblock-l10n": "^3.10.20210413104833",
     "pngjs": "3.3.3",
     "scratch-audio": "0.1.0-prerelease.20200528195344",
     "scratch-render": "0.1.0-prerelease.20211028200436",

@@ -558,7 +558,7 @@ const serialize = function (runtime, targetId) {
 
     // If no device setting means this project is a pure scratch project, so we convert the procedures blocks which
     // is not supported by scratch3 to the types supported by scratch3, so that scratch3 can open the pure scratch
-    // project created by openblock.
+    // project created by braceletmaker.
     if (obj.device === null) {
         obj.targets = obj.targets.map(target => {
             target.blocks = Object.fromEntries(
