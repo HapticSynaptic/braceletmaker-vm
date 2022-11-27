@@ -44,8 +44,8 @@ module.exports = [
     defaultsDeep({}, base, {
         target: 'web',
         entry: {
-            'braceletmaker-vm': './src/index.js',
-            'braceletmaker-vm.min': './src/index.js'
+            '@hapticsynaptic/braceletmaker-vm': './src/index.js',
+            '@hapticsynaptic/braceletmaker-vm.min': './src/index.js'
         },
         output: {
             libraryTarget: 'umd',
@@ -64,7 +64,7 @@ module.exports = [
     defaultsDeep({}, base, {
         target: 'node',
         entry: {
-            'braceletmaker-vm': './src/index.js'
+            '@hapticsynaptic/braceletmaker-vm': './src/index.js'
         },
         output: {
             libraryTarget: 'commonjs2',
@@ -108,7 +108,7 @@ module.exports = [
                     loader: 'script-loader'
                 },
                 {
-                    test: require.resolve('braceletmaker-blocks/dist/vertical.js'),
+                    test: require.resolve('@hapticsynaptic/braceletmaker-blocks/dist/vertical.js'),
                     loader: 'expose-loader?Blockly'
                 },
                 {
@@ -130,7 +130,7 @@ module.exports = [
         },
         plugins: base.plugins.concat([
             new CopyWebpackPlugin([{
-                from: 'node_modules/braceletmaker-blocks/media',
+                from: 'node_modules/@hapticsynaptic/braceletmaker-blocks/media',
                 to: 'media'
             }, {
                 from: 'node_modules/scratch-storage/dist/web'
